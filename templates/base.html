@@ -1,0 +1,48 @@
+{% block head %}
+  <link rel="stylesheet" type='text/css' href="{{url_for('static', filename='css/bootstrap.min.css')}}" >
+{% endblock%}
+
+
+{% block navbar %}
+<div class="navbar navbar-dark bg-primary" role="navigation" >
+  <div class="container" >
+    <div class="navbar-header" >
+      <div class='pull-xs-right'>
+      <button class="navbar-toggler"  type="button" data-toggle="collapse" data-target=".navbar-collapse" >
+         &#9776;
+      </button>
+        </div>
+      <a class="navbar-brand" href="/" >Flasky</a>
+    </div>
+    <div class="navbar-collapse collapse pull-xs-right">
+      <ul class="nav navbar-nav" >
+        <li ><a href="/" >Home</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block title %} Flasky {% endblock %}
+
+{% block content %}
+    {% for message in get_flashed_messages() %}
+      <div class="alert alert-warning">
+        <button class="close" type="button" data-dismiss="alert">&times;</button>
+        {{ message }}
+      </div>
+
+    {% endfor %}
+    <div class="container">
+      {% block entry_content %}
+      {% endblock %}
+    </div>
+{% endblock %}
+
+
+
+{% block script %}
+<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+{% endblock %}
